@@ -1,23 +1,14 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <block wx:if="{{canIUseOpenData}}" calss="userinfo-opendata">
-      <view class="userinfo-avatar" bindtap="bindViewTap">
-        <open-data type="userAvatarUrl"></open-data>
-      </view>
-      <open-data type="userNickName"></open-data>
-    </block>
-    <block wx:elif="{{!hasUserInfo}}">
-      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
-    </block>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<!-- index.wxml -->
+<view class="global">
+  <button bindtap="createNumber">生成随机数</button>
+  <view class="circle">{{message}}</view>
+  <view class="numbers">
+    <picker class="number" bindchange="bindPickerChange" value="{{index1}}" range="{{arrayX}}">
+      <view class="picker">当前选择：{{arrayX[index1]}}</view>
+    </picker>
+    <picker class="number" bindchange="bindPickerChangeY" value="{{index2}}" range="{{arrayY}}">
+      <view class="picker">{{arrayY[index2]}}</view>
+    </picker>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+  <button bindtap='ok'>确定</button>
 </view>
